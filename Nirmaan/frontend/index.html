@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Communication Skills Scoring System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🎤 Communication Skills Scoring System</h1>
+            <p class="subtitle">AI-Powered Transcript Analysis with Comprehensive Feedback</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Input Section -->
+            <section class="input-section card">
+                <h2>📝 Enter Your Transcript</h2>
+                <div class="input-controls">
+                    <textarea 
+                        id="transcriptInput" 
+                        placeholder="Paste your self-introduction transcript here... (minimum 10 words)&#10;&#10;Example:&#10;Hello everyone! My name is John Doe, and I'm thrilled to introduce myself today. I recently graduated from MIT with a degree in Computer Science..."
+                        rows="12"
+                    ></textarea>
+                    <div class="word-count">
+                        <span id="wordCount">0 words</span>
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button id="scoreBtn" class="btn btn-primary">
+                        <span class="btn-icon">⚡</span>
+                        Score Transcript
+                    </button>
+                    <button id="loadSampleBtn" class="btn btn-secondary">
+                        <span class="btn-icon">📄</span>
+                        Load Sample
+                    </button>
+                    <button id="clearBtn" class="btn btn-tertiary">
+                        <span class="btn-icon">🗑️</span>
+                        Clear
+                    </button>
+                </div>
+            </section>
+
+            <!-- Loading Indicator -->
+            <div id="loadingIndicator" class="loading-indicator hidden">
+                <div class="spinner"></div>
+                <p>Analyzing transcript... This may take a few moments on first run.</p>
+            </div>
+
+            <!-- Results Section -->
+            <section id="resultsSection" class="results-section hidden">
+                <!-- Overall Score Card -->
+                <div class="card score-card">
+                    <h2>📊 Overall Score</h2>
+                    <div class="overall-score">
+                        <div class="score-circle">
+                            <svg viewBox="0 0 200 200">
+                                <circle class="score-circle-bg" cx="100" cy="100" r="90"></circle>
+                                <circle id="scoreCircleFill" class="score-circle-fill" cx="100" cy="100" r="90"></circle>
+                            </svg>
+                            <div class="score-text">
+                                <span id="overallScore" class="score-number">0</span>
+                                <span class="score-label">/ 100</span>
+                            </div>
+                        </div>
+                        <div class="score-details">
+                            <div class="score-category">
+                                <span class="label">Performance:</span>
+                                <span id="scoreCategory" class="category-badge">-</span>
+                            </div>
+                            <div class="score-meta">
+                                <span class="label">Word Count:</span>
+                                <span id="totalWordCount">0</span>
+                            </div>
+                            <div class="score-meta">
+                                <span class="label">Analyzed At:</span>
+                                <span id="timestamp">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Per-Criterion Scores -->
+                <div class="card criteria-card">
+                    <h2>📋 Detailed Criterion Scores</h2>
+                    <div id="criteriaContainer" class="criteria-container">
+                        <!-- Criterion items will be dynamically inserted here -->
+                    </div>
+                </div>
+
+                <!-- Export Options -->
+                <div class="export-section">
+                    <button id="exportJsonBtn" class="btn btn-secondary">
+                        <span class="btn-icon">💾</span>
+                        Export as JSON
+                    </button>
+                    <button id="printBtn" class="btn btn-secondary">
+                        <span class="btn-icon">🖨️</span>
+                        Print Report
+                    </button>
+                </div>
+            </section>
+
+            <!-- Error Message -->
+            <div id="errorMessage" class="error-message hidden"></div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2025 Communication Skills Scoring System | Built with ❤️ for Nirmaan AI</p>
+            <p class="footer-tech">Powered by Flask, Python, sentence-transformers, and modern NLP</p>
+        </footer>
+    </div>
+
+    <!-- Sample Transcripts Modal -->
+    <div id="sampleModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Select a Sample Transcript</h2>
+                <button id="closeModalBtn" class="close-btn">&times;</button>
+            </div>
+            <div id="sampleList" class="sample-list">
+                <!-- Sample transcripts will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
